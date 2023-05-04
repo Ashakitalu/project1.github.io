@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY CV</title>
+    <!-- <link rel="stylesheet" type="text/css" href="login.css"> -->
+</head>
+<style>
+    .container{
+        background-color: blueviolet;
+    }
+        
+    
+
+        
+    
+     /* table,tr,th,td{
+        border: 2px solid black;
+        border-collapse: collapse;
+        padding: 4px;
+        padding-right: 4px; 
+        
+    } */
+    #navbar{
+        background-color: rgb(190, 59, 7);
+        display: flex;
+
+    }
+    ul li{
+        list-style-type: none;
+        display: inline-block;
+        padding: 5px;
+        
+    }
+    ul li a{
+        text-decoration: none;
+    }
+    form {
+	width: 300px;
+	margin: 0 auto;
+}
+
+label {
+	display: block;
+	margin-top: 10px;
+}
+
+input[type="text"],input[type="email"]{
+	width: 100%;
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	
+	border-radius: 5px;
+}
+
+input[type="button"] {
+	background-color: #84a50f;
+	color: white;
+	padding: 10px 20px;
+	margin-top: 10px;
+	
+	border-radius: 5px;
+	cursor: pointer;
+} 
+    
+    
+
+</style>
+<body>
+    <div class="container">
+        
+        <div id="navbar">
+            <ul>
+                <li style="margin-left: 1000px;"><a href="Home.html">Home</a></li>
+                <li><a href="My CV.html">My CV</a></li>
+                <li><a href="Contact Us.html">Contact Us</a></li>
+            </ul> 
+               
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15717.346195548349!2d39.68133780997627!3d-9.989033651456396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18f2dc3b0a286425%3A0x4e806f9a88894304!2sLindi!5e0!3m2!1sen!2stz!4v1683137590548!5m2!1sen!2stz" width="600" height="450" style="border:0; margin-left: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <h1 style="text-align: center;">Contact Us</h1>
+        <div id="m"></div>
+        <form id="contact">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+            <label for="comments">Comments:</label>
+            <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
+</body>
+
+    <script>
+    
+        let contact = document.querySelector("#contact");
+        contact.addEventListener("submit",function(){
+            let name = document.querySelector("#name").value;
+            let address = document.querySelector("#address").value;
+            let email = document.querySelector("#email").value;
+            let comments = document.querySelector("#comments").value;
+
+            //create obje
+             let detail = {name:name,
+                          address:address,
+                          email:email,
+                          comments:comments};
+
+             let details = JSON.parse(localStorage.getItem("details")) || [];
+
+             details.push(detail);
+
+             
+
+            //to save in the localstorage and createing keys for every data
+            localStorage.setItem("details", JSON.stringify(details));
+
+            alert("The form has successfuly submitted");
+
+            contact.reset();
+
+        });
+    </script>
+
+</html>
